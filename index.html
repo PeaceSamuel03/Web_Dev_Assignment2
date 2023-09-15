@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>CA2 GAME</title>
+        <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"/>
+    </head>
+    <body>
+        <header>
+            <h1>Welcome to my game!</h1>
+            {% if g.user %} 
+                <p>User id: {{ g.user }}</p>
+                <p><a href="{{ url_for('logout') }}">Logout</a></p>
+            {% else %} 
+                <p><a href="{{ url_for('register') }}">Register</a></p>
+                <p><a href="{{ url_for('login') }}">Login</a></p>
+            {% endif %}
+        </header>
+        <p>
+            Instructions:
+            1) Use the arrow keys to move
+            2)Use your mouse to aim and shoot
+
+        </p>
+        <p>
+            Objective:
+            In order to win you must shoot the undead mummies. If you receive enough damage you will lose.
+        </p>
+        <p>Good Luck!</p>
+        <p><a href="{{ url_for('leaderboard') }}">Leader Board</a></p>
+        <p> <a href="{{ url_for('game')}}">START NOW</a></p>
+        <footer>
+            <p>
+                <small>
+                    &copy; Peace's Webpage
+                    Author: Peace Samuel
+                </small>
+            </p> 
+        </footer>
+    </body>
+</html>
