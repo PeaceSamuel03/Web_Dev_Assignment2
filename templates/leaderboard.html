@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>CA2 GAME</title>
+        <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"/>
+    </head>
+    <body>
+        <header>
+            <h1>Welcome to my game!</h1>
+            {% if g.user %} 
+                <p>User id: {{ g.user }}</p>
+                <p><a href="{{ url_for('logout') }}">Logout</a></p>
+            {% else %} 
+                <p><a href="{{ url_for('register') }}">Register</a></p>
+                <p><a href="{{ url_for('login') }}">Login</a></p>
+            {% endif %}
+        </header>
+        <h1>Our leader board</h1>
+        <table>
+            {% for player in players %} 
+            <tr>
+                <td>{{ player["user_id"] }}</td>
+                <td>{{ player["score"] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <p> <a href="{{ url_for('game')}}">START NOW</a></p>
+        <footer>
+            <p>
+                <small>
+                    &copy; Peace's Webpage
+                    Author: Peace Samuel
+                </small>
+            </p> 
+        </footer>
+    </body>
+</html>
